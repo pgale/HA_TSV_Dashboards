@@ -66,3 +66,5 @@ This is a simple dashboard utilising the controls exposed by Fully Kiosk Browser
 ![](assets/images/ManagementScreenshot.png)
 
 For any further questions - feel free to write in the Discussions area in GitHub.
+
+![](assets/images/IMG_0479.JPG)
