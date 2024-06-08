@@ -239,7 +239,6 @@ views:
           - type: map
             entities:
               - entity: person.paul
-              - entity: person.simon
             aspect_ratio: '1.45'
             theme_mode: auto
             card_mod:
