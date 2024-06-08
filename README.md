@@ -6,7 +6,11 @@ This is a simple copy of one of my dashboards I use on my ThinkSmart View device
 
 [YAML file.](TSV_Dashboard.yaml)
 
+You'll need to crteate a new dashboard, edit it in raw mode from the dashboard view (top right pencil-three dots-Raw configuration editor) and paste in the code
+
 #### Dependencies (HACS): ####
+
+There are quite a few dependencies but all of these are common, robust, well-supported and very useful anyway.
 
 [lovelace-digital-clock](https://github.com/wassy92x/lovelace-digital-clock)
 
@@ -18,9 +22,15 @@ This is a simple copy of one of my dashboards I use on my ThinkSmart View device
 
 [Kiosk mode](https://github.com/NemesisRE/kiosk-mode) (for the kiosk mode settings based on logged-in users)
 
+[Layout-card](https://github.com/thomasloven/lovelace-layout-card) (for the vertical layout card that Bubble Card needs)
+
 #### Dependencies (HA entities etc): ####
 
-The kiosk mode is controlled via a boolean helper called `input_boolean.kiosk_hide_header_and_sidebar` This is used in my management screen (as below).
+- The kiosk mode is controlled via a boolean helper called `input_boolean.kiosk_hide_header_and_sidebar` This is used in my management screen (as below).
+
+- The conditional popups for my water softener and leak detectors are based on Aqara water leak sensors
+
+- 
 
 ### Optional buttons and popup screens ###
 
