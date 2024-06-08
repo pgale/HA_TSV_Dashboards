@@ -47,6 +47,8 @@ Samsung SmartThings Integration (Washer and Drier)
 [Music Assistant](https://music-assistant.io/)
 The ThinkSmart View does act as a player (via Fully Kiosk Browser) and sounds good. Currently there is a bug in the Music Assistant Fully Kiosk module that prevents tracks changing. It has been logged to be fixed at some point (hopefully the next release).
 
+[The dark olive green theme I use](https://github.com/AmoebeLabs/HA-Theme_M3-07-DarkOliveGreen)
+
 ### Other features ###
 
 - I also have popups triggered by the Reolink video doorbell being pushed and Frigate detecting a person or animal. This triggers the Bubble Card popup via a boolean helper. I also send TTS to the devices around the house using HA Cloud for fabulous sounding voices (I like OliviaNeural best).
