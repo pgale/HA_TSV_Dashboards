@@ -1,6 +1,8 @@
 # ThinkSmart View Home Assistant dashboards #
 
-This is a simple copy of one of my dashboards I use on my ThinkSmart View devices.
+![](assets/images/dashboarddemo.gif)
+
+This is a simple copy of one of my dashboards I use on my ThinkSmart View devices. The gif shows just a couple of screens. A fuller screen recording can be found [here](assets/images/dashboarddemo.mp4)
 
 #### Dependencies: ####
 
