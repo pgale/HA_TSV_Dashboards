@@ -55,6 +55,8 @@ The ThinkSmart View does act as a player (via Fully Kiosk Browser) and sounds go
 
 - Conditional popus also include if the letterbox sensor has been triggered.
 
+- I run these dashboards on [Fully Kiosk Browser](https://www.fully-kiosk.com/). Wallpanel will also work but doesn't give as many features to control the device.
+
 - I plan on adding conditional popups for my iParcelBox to say when a parcel has been delivered. It does already on an NSPanelPro in my hallway.
 
 ### Management Screen (optional) ###
