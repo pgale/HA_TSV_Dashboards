@@ -14,6 +14,8 @@ This is a simple copy of one of my dashboards I use on my ThinkSmart View device
 
 [Mushroom card](https://github.com/piitaya/lovelace-mushroom)
 
+[Kiosk mode](https://github.com/NemesisRE/kiosk-mode) (for the kiosk mode settings based on logged-in users)
+
 ### Optional buttons and popup screens ###
 
 Samsung SmartThings Integration (Washer and Drier)
