@@ -24,15 +24,17 @@ There are quite a few dependencies but all of these are common, robust, well-sup
 
 [Layout-card](https://github.com/thomasloven/lovelace-layout-card) (for the vertical layout card that Bubble Card needs)
 
+[stateful-scenes](https://github.com/hugobloem/stateful_scenes) (This tracks the state of scenes in HA and is in beta for Philips Hue scenes. It currently doesn't work for Hue scenes but hopefully will in the future when it's been developed further/debugged)
+
 #### Dependencies (HA entities etc): ####
 
 - The kiosk mode is controlled via a boolean helper called `input_boolean.kiosk_hide_header_and_sidebar` This is used in my management screen (as below).
 
 - The conditional popups for my water softener and leak detectors are based on Aqara water leak sensors
 
-- 
+- My camera feed comes from a Reolink video doorbell, linked to a Frigate rtsp stream setup in HA using the Generic Camera integration. I found this to be the best performing option after testing a whole load of different options. It's fairly light-weight and runs on all my devices with no issues.
 
-### Optional buttons and popup screens ###
+### Optional buttons and popup panels ###
 
 Samsung SmartThings Integration (Washer and Drier)
 
@@ -44,6 +46,14 @@ Samsung SmartThings Integration (Washer and Drier)
 
 [Music Assistant](https://music-assistant.io/)
 The ThinkSmart View does act as a player (via Fully Kiosk Browser) and sounds good. Currently there is a bug in the Music Assistant Fully Kiosk module that prevents tracks changing. It has been logged to be fixed at some point (hopefully the next release).
+
+### Other features ###
+
+- I also have popups triggered by the Reolink video doorbell being pushed and Frigate detecting a person or animal. This triggers the Bubble Card popup via a boolean helper. I also send TTS to the devices around the house using HA Cloud for fabulous sounding voices (I like OliviaNeural best).
+
+- Conditional popus also include if the letterbox sensor has been triggered.
+
+- I plan on adding conditional popups for my iParcelBox to say when a parcel has been delivered. It does already on an NSPanelPro in my hallway.
 
 ### Management Screen (optional) ###
 
