@@ -1,0 +1,596 @@
+kiosk_mode:
+  user_settings:
+    - users:
+        - Paul
+      ignore_entity_settings: true
+  entity_settings:
+    - entity:
+        input_boolean.kiosk_hide_header_and_sidebar: 'on'
+      hide_sidebar: true
+      hide_header: true
+    - entity:
+        input_boolean.kiosk_hide_header_and_sidebar: 'off'
+      hide_sidebar: false
+      hide_header: false
+views:
+  - title: Office Panel
+    path: office
+    background: >-
+      center / cover no-repeat fixed
+      url('/local/images/backgrounds/leaf-darker-background.png')
+    type: custom:vertical-layout
+    cards:
+      - type: custom:digital-clock
+        dateFormat: cccc dd LLLL yyyy
+        timeFormat: HH:mm
+        card_mod:
+          style: |
+            ha-card {
+              background-color: transparent;
+              border-color: transparent;
+              box-shadow: none;
+            }
+            span.first-line 
+            {
+            font-size: 4.5em;
+            margin-top:-5px;
+            margin-bottom:10px;
+            }
+            span.second-line 
+            {
+            font-size: 2em;
+            margin-bottom:5px;
+            }
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: sensor.water_softener_salt_level
+            state: empty
+        card:
+          type: custom:mushroom-template-card
+          primary: Water softener salt tank empty!
+          secondary: Please refill
+          icon: mdi:water
+          tap_action:
+            action: none
+          hold_action:
+            action: none
+          double_tap_action:
+            action: none
+          badge_color: white
+          card_mod:
+            style:
+              mushroom-shape-icon$: |
+                .shape {
+                  --shape-color: transparent !important;
+                }
+              .: |
+                ha-state-icon {
+                  color: white;
+                  --icon-symbol-size: 40px;
+                    }
+                ha-card {
+                  background-color: #732629;
+                  --card-primary-color: white;
+                  --card-secondary-color: white;
+                }
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: binary_sensor.kitchen_sink_water_leak_moisture
+            state: 'on'
+        card:
+          type: custom:mushroom-template-card
+          primary: Kitchen sink leak detected!
+          secondary: null
+          icon: mdi:water
+          tap_action:
+            action: none
+          hold_action:
+            action: none
+          double_tap_action:
+            action: none
+          badge_color: white
+          card_mod:
+            style:
+              mushroom-shape-icon$: |
+                .shape {
+                  --shape-color: transparent !important;
+                }
+              .: |
+                ha-state-icon {
+                  color: white;
+                  --icon-symbol-size: 40px;
+                    }
+                ha-card {
+                  background-color: #732629;
+                  --card-primary-color: white;
+                  --card-secondary-color: white;
+                }
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: input_boolean.front_door_letterbox_opened
+            state: 'on'
+        card:
+          type: custom:mushroom-template-card
+          primary: Something posted through letterbox
+          secondary: null
+          icon: mdi:email
+          tap_action:
+            action: call-service
+            service: input_boolean.turn_off
+            target:
+              entity_id: input_boolean.front_door_letterbox_opened
+          hold_action:
+            action: none
+          double_tap_action:
+            action: none
+          badge_color: white
+          card_mod:
+            style:
+              mushroom-shape-icon$: |
+                .shape {
+                  --shape-color: transparent !important;
+                }
+              .: |
+                ha-state-icon {
+                  color: white;
+                  --icon-symbol-size: 40px;
+                    }
+                ha-card {
+                  background-color: #e3af46;
+                  --card-primary-color: white;
+                  --card-secondary-color: white;
+                }
+      - show_current: true
+        show_forecast: false
+        type: weather-forecast
+        entity: weather.forecast_home
+        forecast_type: daily
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Day
+            secondary: Scene
+            icon: hue:bulb-filament
+            entity: scene.office_office_day
+            icon_color: >-
+              {{ 'light-green' if states('switch.office_day_stateful_scene') ==
+              'on' else 'dark-grey' }}
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:mushroom-template-card
+            primary: Bright
+            secondary: Scene
+            icon: hue:bulb-filament
+            entity: scene.office_bright
+            icon_color: >-
+              {{ 'light-green' if states('switch.bright_stateful_scene') == 'on'
+              else 'dark-grey' }}
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:mushroom-template-card
+            primary: Night
+            secondary: Scene
+            icon: hue:bulb-filament
+            entity: scene.office_office_night
+            icon_color: >-
+              {{ 'light-green' if states('switch.office_night_stateful_scene')
+              == 'on' else 'dark-grey' }}
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:mushroom-template-card
+            primary: Lights
+            secondary: 'OFF'
+            icon: mdi:lightbulb-group-off
+            entity: scene.office_lights_off
+            icon_color: dark-grey
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:bubble-card
+            card_type: empty-column
+          - type: custom:mushroom-template-card
+            entity: input_boolean.office_auto_lighting_bypass
+            primary: Auto
+            secondary: lighting
+            icon: mdi:home
+            icon_color: >-
+              {{ 'red' if states('input_boolean.office_auto_lighting_bypass') ==
+              'on' else 'light-green' }}
+            tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 3
+      - square: false
+        type: grid
+        cards:
+          - type: map
+            entities:
+              - entity: person.paul
+              - entity: person.simon
+            aspect_ratio: '1.45'
+            theme_mode: auto
+            card_mod:
+              style:
+                ha-map$: |
+                  .leaflet-control-attribution {
+                    visibility: hidden;
+                   }
+                  .leaflet-control-zoom {
+                    visibility: hidden;
+                   }    
+          - camera_view: live
+            type: picture-glance
+            entities:
+              - entity: light.porch
+            camera_image: camera.192_168_0_10
+            aspect_ratio: '1.45'
+            tap_action:
+              action: navigate
+              navigation_path: '#cameras'
+            hold_action:
+              action: none
+        columns: 2
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: >-
+              {% if is_state('sensor.washing_machine_washer_machine_state',
+              'run') %}
+                Remaining {% set ct = states('sensor.washing_machine_washer_completion_time') | as_datetime %}{{ '00:00' if now() > ct else (ct - now()).total_seconds() | timestamp_custom('%H:%M', false) }}        
+              {% elif is_state('sensor.washing_machine_washer_machine_state',
+              'pause') %}
+                Washing machine paused
+              {% elif is_state('sensor.washing_machine_washer_machine_state',
+              'stop') %}
+                Washer off
+              {% endif %}
+            secondary: >-
+              {% if is_state('sensor.washing_machine_washer_machine_state',
+              'run') %}
+                Status: {{ states('sensor.washing_machine_washer_job_state') }}
+              {% endif %}
+            icon: mdi:washing-machine
+            entity: sensor.washing_machine_washer_machine_state
+            tap_action:
+              action: none
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: none
+            icon_color: >-
+              {% if is_state('sensor.washing_machine_washer_machine_state',
+              'run') %}
+                green         
+              {% elif is_state('sensor.washing_machine_washer_machine_state',
+              'stop') %}
+                dark-grey
+              {% elif is_state('sensor.washing_machine_washer_machine_state',
+              'pause') %}
+                lightskyblue
+              {% endif %}
+            fill_container: false
+            badge_icon: ''
+            picture: ''
+            layout: horizontal
+            card_mod:
+              style:
+                mushroom-shape-icon$: |
+                  .shape {
+                    --icon-symbol-size: 35px;
+                    --icon-size: 55px;
+                   }
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:mushroom-template-card
+            primary: >-
+              {% if is_state('sensor.tumble_dryer_dryer_machine_state', 'run')
+              %}
+                Remaining {% set ct = states('sensor.tumble_dryer_dryer_completion_time') | as_datetime %}{{ '00:00' if now() > ct else (ct - now()).total_seconds() | timestamp_custom('%H:%M', false) }}        
+              {% elif is_state('sensor.tumble_dryer_dryer_machine_state',
+              'pause') %}
+                Tumble dryer paused
+              {% elif is_state('sensor.tumble_dryer_dryer_machine_state',
+              'stop') %}
+                Dryer off
+              {% endif %}
+            secondary: >-
+              {% if is_state('sensor.tumble_dryer_dryer_machine_state', 'run')
+              %}
+                Status: {{ states('sensor.tumble_dryer_dryer_job_state') }}
+              {% endif %}
+            icon: mdi:tumble-dryer
+            entity: sensor.tumble_dryer_dryer_machine_state
+            tap_action:
+              action: none
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: none
+            icon_color: >-
+              {% if is_state('sensor.tumble_dryer_dryer_machine_state', 'run')
+              %}
+                green         
+              {% elif is_state('sensor.tumble_dryer_dryer_machine_state',
+              'stop') %}
+                dark-grey
+              {% elif is_state('sensor.tumble_dryer_dryer_machine_state',
+              'pause') %}
+                lightskyblue
+              {% endif %}
+            fill_container: false
+            badge_icon: ''
+            picture: ''
+            layout: horizontal
+            card_mod:
+              style:
+                mushroom-shape-icon$: |
+                  .shape {
+                    --icon-symbol-size: 35px;
+                    --icon-size: 55px;
+                  }
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 2
+      - type: custom:mushroom-template-card
+        primary: 'Next bin collection: {{states(''sensor.bin_collection_day'')}}'
+        secondary: '{{states(''sensor.bin_collection_waste_type'')}}'
+        icon: mdi:trash-can
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        icon_color: |-
+          {% if is_state('sensor.bin_collection_days_to', '1') %}
+            amber
+          {% elif is_state('sensor.bin_collection_days_to', '0') %}
+            red
+          {% else %}
+            dark-grey
+          {% endif %}
+        tap_action:
+          action: more-info
+        entity: sensor.bin_collection_days_to
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#lights'
+            hide_backdrop: false
+            state: null
+            text: null
+            margin_top_desktop: 20px
+            margin_top_mobile: '-56px'
+            shadow_opacity: 20
+            bg_opacity: 10
+            bg_blur: 10
+            button_type: slider
+            name: Office lighting
+            show_icon: true
+            show_name: true
+            close_on_click: false
+            background_update: false
+            trigger_close: false
+            tap_action:
+              action: toggle
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+            entity: light.office
+            icon: hue:bulb-group-classic-hung-3-alt
+            force_icon: false
+            show_state: true
+            show_last_updated: true
+            show_attribute: true
+          - type: custom:bubble-card
+            card_type: separator
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.office_ceiling
+            name: Ceiling
+            show_state: true
+            show_last_updated: false
+            show_attribute: true
+            sub_button: []
+            icon: hue:ceiling-buratto-three
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.office_desk_left_play
+            name: Desk left play
+            show_state: true
+            show_last_updated: false
+            show_attribute: true
+            sub_button: []
+            icon: hue:play-bar
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.office_desk_right_play
+            name: Desk right play
+            show_state: true
+            show_last_updated: false
+            show_attribute: true
+            sub_button: []
+            icon: hue:play-bar
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.office_desk_right_iris
+            name: Desk left iris
+            show_state: true
+            show_last_updated: false
+            show_attribute: true
+            sub_button: []
+            icon: hue:iris
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.office_rear_iris
+            name: Rear iris
+            show_state: true
+            show_last_updated: false
+            show_attribute: true
+            sub_button: []
+            icon: hue:iris
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.office_beyond_down
+            name: Beyond down
+            show_state: true
+            show_last_updated: false
+            show_attribute: true
+            sub_button: []
+            icon: hue:beyond-down
+          - type: custom:bubble-card
+            card_type: button
+            button_type: slider
+            entity: light.office_beyond_up
+            name: Beyond up
+            show_state: true
+            show_last_updated: false
+            show_attribute: true
+            sub_button: []
+            icon: hue:beyond-up
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#cameras'
+            trigger_entity: input_boolean.camera_thinksmart_full_screen_popup
+            trigger_state: 'on'
+            trigger_close: true
+            hide_backdrop: false
+            state: null
+            text: null
+            margin_top_desktop: 20px
+            margin_top_mobile: '-56px'
+            shadow_opacity: 20
+            bg_opacity: 10
+            bg_blur: 10
+            background_update: false
+          - camera_view: live
+            type: picture-glance
+            entities: []
+            camera_image: camera.192_168_0_10
+            tap_action:
+              action: none
+            hold_action:
+              action: none
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#weather'
+            show_name: false
+            show_icon: false
+            margin_top_mobile: '-56px'
+            hide_backdrop: true
+          - type: iframe
+            url: >-
+              https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=8&overlay=radar&product=radar&level=surface&lat=51.509&lon=-1.994
+            aspect_ratio: 135%
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#mealie'
+            margin_top_mobile: '-56px'
+            button_type: name
+            show_icon: false
+            'false': []
+            scrolling_effect: false
+            hide_backdrop: true
+          - type: iframe
+            url: https://recipes.siliconpixel.com
+            aspect_ratio: 140%
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#music'
+            hide_backdrop: false
+            state: null
+            text: null
+            margin_top_desktop: 20px
+            margin_top_mobile: '-56px'
+            shadow_opacity: 20
+            bg_opacity: 10
+            bg_blur: 10
+            button_type: name
+            'false': []
+            show_icon: false
+            scrolling_effect: false
+          - type: iframe
+            url: https://music.siliconpixel.com/#/home
+            aspect_ratio: 140%
+      - type: custom:bubble-card
+        card_type: horizontal-buttons-stack
+        1_link: '#lights'
+        1_name: ''
+        1_icon: hue:gradient-lightstrip
+        1_entity: null
+        hide_gradient: true
+        is_sidebar_hidden: false
+        2_name: ''
+        2_icon: mdi:cctv
+        2_link: '#cameras'
+        3_link: '#weather'
+        3_name: ''
+        3_icon: mdi:weather-hail
+        4_link: '#mealie'
+        4_name: ''
+        4_icon: mdi:food
+        5_link: '#music'
+        5_icon: mdi:music
+        5_name: ''
+        rise_animation: true
+        card_mod:
+          style: |
+            .bubble-background {
+              background-color: transparent;
+            }
+    theme: M3-D07-DarkOliveGreen
+title: Office Panel
