@@ -6,7 +6,7 @@ This is a simple copy of one of my dashboards I use on my ThinkSmart View device
 
 [YAML file.](TSV_Dashboard.yaml)
 
-You'll need to crteate a new dashboard, edit it in raw mode from the dashboard view (top right pencil-three dots-Raw configuration editor) and paste in the code
+You'll need to crteate a new dashboard, edit it in raw mode from the dashboard view (top right pencil-three dots-Raw configuration editor) and paste in the code. Expect to make *extensive* modifications as dashboard rely heavily on a users HA setup. Hopefully this will give some ideas or a starting point if you like this type of approach.
 
 #### Dependencies (HACS): ####
 
@@ -60,3 +60,5 @@ The ThinkSmart View does act as a player (via Fully Kiosk Browser) and sounds go
 This is a simple dashboard utilising the controls exposed by Fully Kiosk Browser. It's really handy as it allows me to control the devices, reload, restart etc. Also allows dynamic display of sidebar and header in kiosk mode - when you want to access other HA dashboards or settings on the TSV. Handy!
 
 ![](assets/images/ManagementScreenshot.png)
+
+For any further questions - feel free to write in the Discussions area in GitHub.
