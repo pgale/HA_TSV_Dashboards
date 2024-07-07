@@ -26,6 +26,8 @@ There are quite a few dependencies but all of these are common, robust, well-sup
 
 [stateful-scenes](https://github.com/hugobloem/stateful_scenes) (This tracks the state of scenes in HA and is in beta for Philips Hue scenes. It currently doesn't work for Hue scenes but hopefully will in the future when it's been developed further/debugged)
 
+[Philips Hue Icons](https://github.com/arallsopp/hass-hue-icons) (optional) Philips Hue icons
+
 #### Dependencies (HA entities etc): ####
 
 - The kiosk mode is controlled via a boolean helper called `input_boolean.kiosk_hide_header_and_sidebar` This is used in my management screen (as below).
