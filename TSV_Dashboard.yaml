@@ -41,113 +41,136 @@ views:
             font-size: 2em;
             margin-bottom:5px;
             }
-      - type: conditional
-        conditions:
-          - condition: state
-            entity: sensor.water_softener_salt_level
-            state: empty
-        card:
-          type: custom:mushroom-template-card
-          primary: Water softener salt tank empty!
-          secondary: Please refill
-          icon: mdi:water
-          tap_action:
-            action: none
-          hold_action:
-            action: none
-          double_tap_action:
-            action: none
-          badge_color: white
-          card_mod:
-            style:
-              mushroom-shape-icon$: |
-                .shape {
-                  --shape-color: transparent !important;
-                }
-              .: |
-                ha-state-icon {
-                  color: white;
-                  --icon-symbol-size: 40px;
-                    }
-                ha-card {
-                  background-color: #732629;
-                  --card-primary-color: white;
-                  --card-secondary-color: white;
-                }
-      - type: conditional
-        conditions:
-          - condition: state
-            entity: binary_sensor.kitchen_sink_water_leak_moisture
-            state: 'on'
-        card:
-          type: custom:mushroom-template-card
-          primary: Kitchen sink leak detected!
-          secondary: null
-          icon: mdi:water
-          tap_action:
-            action: none
-          hold_action:
-            action: none
-          double_tap_action:
-            action: none
-          badge_color: white
-          card_mod:
-            style:
-              mushroom-shape-icon$: |
-                .shape {
-                  --shape-color: transparent !important;
-                }
-              .: |
-                ha-state-icon {
-                  color: white;
-                  --icon-symbol-size: 40px;
-                    }
-                ha-card {
-                  background-color: #732629;
-                  --card-primary-color: white;
-                  --card-secondary-color: white;
-                }
-      - type: conditional
-        conditions:
-          - condition: state
-            entity: input_boolean.front_door_letterbox_opened
-            state: 'on'
-        card:
-          type: custom:mushroom-template-card
-          primary: Something posted through letterbox
-          secondary: null
-          icon: mdi:email
-          tap_action:
-            action: call-service
-            service: input_boolean.turn_off
-            target:
-              entity_id: input_boolean.front_door_letterbox_opened
-          hold_action:
-            action: none
-          double_tap_action:
-            action: none
-          badge_color: white
-          card_mod:
-            style:
-              mushroom-shape-icon$: |
-                .shape {
-                  --shape-color: transparent !important;
-                }
-              .: |
-                ha-state-icon {
-                  color: white;
-                  --icon-symbol-size: 40px;
-                    }
-                ha-card {
-                  background-color: #e3af46;
-                  --card-primary-color: white;
-                  --card-secondary-color: white;
-                }
       - show_current: true
         show_forecast: false
         type: weather-forecast
-        entity: weather.forecast_home
+        entity: weather.pirateweather
         forecast_type: daily
+        name: Current weather
+      - type: custom:swipe-card
+        parameters:
+          effect: fade
+          autoplay:
+            delay: 3000
+            speed: 300
+            disableOnInteraction: false
+          rewind: true
+          slidesPerView: 1
+        cards:
+          - type: custom:mushroom-template-card
+            primary: 'Next bin collection: {{states(''sensor.bin_collection_day'')}}'
+            secondary: '{{states(''sensor.bin_collection_waste_type'')}}'
+            icon: mdi:trash-can
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            icon_color: |-
+              {% if is_state('sensor.bin_collection_days_to', '1') %}
+                amber
+              {% elif is_state('sensor.bin_collection_days_to', '0') %}
+                red
+              {% else %}
+                dark-grey
+              {% endif %}
+            tap_action:
+              action: more-info
+            entity: sensor.bin_collection_days_to
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: input_boolean.front_door_letterbox_opened
+                state: 'on'
+            card:
+              type: custom:button-card
+              entity: input_boolean.front_door_letterbox_opened
+              color: auto
+              icon: mdi:email
+              name: Something posted through letterbox
+              tap_action:
+                action: call-service
+                service: input_boolean.turn_off
+                data:
+                  entity_id: input_boolean.front_door_letterbox_opened
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              size: 150%
+              styles:
+                card:
+                  - height: 65px
+                grid:
+                  - grid-template-areas: '"i n"'
+                  - grid-template-columns: 13% 87%
+                name:
+                  - justify-self: start
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: sensor.water_softener_salt_level
+                state: empty
+            card:
+              type: custom:mushroom-template-card
+              primary: Water softener salt tank empty!
+              secondary: Please refill
+              icon: mdi:water
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              badge_color: white
+              card_mod:
+                style:
+                  mushroom-shape-icon$: |
+                    .shape {
+                      --shape-color: transparent !important;
+                    }
+                  .: |
+                    ha-state-icon {
+                      color: white;
+                      --icon-symbol-size: 40px;
+                        }
+                    ha-card {
+                      background-color: #732629;
+                      --card-primary-color: white;
+                      --card-secondary-color: white;
+                    }
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: binary_sensor.kitchen_sink_water_leak_moisture
+                state: 'on'
+            card:
+              type: custom:mushroom-template-card
+              primary: Kitchen sink leak detected!
+              secondary: null
+              icon: mdi:water
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              badge_color: white
+              card_mod:
+                style:
+                  mushroom-shape-icon$: |
+                    .shape {
+                      --shape-color: transparent !important;
+                    }
+                  .: |
+                    ha-state-icon {
+                      color: white;
+                      --icon-symbol-size: 40px;
+                        }
+                    ha-card {
+                      background-color: #732629;
+                      --card-primary-color: white;
+                      --card-secondary-color: white;
+                    }
       - square: false
         type: grid
         cards:
@@ -239,6 +262,7 @@ views:
           - type: map
             entities:
               - entity: person.paul
+              - entity: person.simon
             aspect_ratio: '1.45'
             theme_mode: auto
             card_mod:
@@ -250,17 +274,20 @@ views:
                   .leaflet-control-zoom {
                     visibility: hidden;
                    }    
-          - camera_view: live
-            type: picture-glance
-            entities:
-              - entity: light.porch
+          - show_state: false
+            show_name: false
+            camera_view: live
+            type: picture-entity
+            entity: light.study_ceiling
             camera_image: camera.192_168_0_10
-            aspect_ratio: '1.45'
             tap_action:
               action: navigate
               navigation_path: '#cameras'
             hold_action:
               action: none
+            aspect_ratio: '1.45'
+            state_filter:
+              'off': brightness(100%)
         columns: 2
       - square: false
         type: grid
@@ -370,25 +397,6 @@ views:
                    --card-secondary-font-size: 13px;
                   }
         columns: 2
-      - type: custom:mushroom-template-card
-        primary: 'Next bin collection: {{states(''sensor.bin_collection_day'')}}'
-        secondary: '{{states(''sensor.bin_collection_waste_type'')}}'
-        icon: mdi:trash-can
-        hold_action:
-          action: none
-        double_tap_action:
-          action: none
-        icon_color: |-
-          {% if is_state('sensor.bin_collection_days_to', '1') %}
-            amber
-          {% elif is_state('sensor.bin_collection_days_to', '0') %}
-            red
-          {% else %}
-            dark-grey
-          {% endif %}
-        tap_action:
-          action: more-info
-        entity: sensor.bin_collection_days_to
       - type: vertical-stack
         cards:
           - type: custom:bubble-card
@@ -510,14 +518,20 @@ views:
             bg_opacity: 10
             bg_blur: 10
             background_update: false
-          - camera_view: live
-            type: picture-glance
-            entities: []
+          - show_state: false
+            show_name: false
+            camera_view: live
+            type: picture-entity
+            entity: light.study_ceiling
             camera_image: camera.192_168_0_10
             tap_action:
-              action: none
+              action: navigate
+              navigation_path: '#camera'
             hold_action:
               action: none
+            aspect_ratio: '1.45'
+            state_filter:
+              'off': brightness(100%)
       - type: vertical-stack
         cards:
           - type: custom:bubble-card
@@ -527,6 +541,8 @@ views:
             show_icon: false
             margin_top_mobile: '-56px'
             hide_backdrop: true
+            name: ''
+            show_header: false
           - type: iframe
             url: >-
               https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=8&overlay=radar&product=radar&level=surface&lat=51.509&lon=-1.994
@@ -542,9 +558,11 @@ views:
             'false': []
             scrolling_effect: false
             hide_backdrop: true
+            show_header: false
           - type: iframe
             url: https://recipes.siliconpixel.com
             aspect_ratio: 140%
+            allow_open_top_navigation: true
       - type: vertical-stack
         cards:
           - type: custom:bubble-card
@@ -562,9 +580,75 @@ views:
             'false': []
             show_icon: false
             scrolling_effect: false
+            show_header: false
           - type: iframe
-            url: https://music.siliconpixel.com/#/home
+            url: https://music.siliconpixel.com/
             aspect_ratio: 140%
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#alert'
+            margin_top_mobile: '-56px'
+            bg_color: '#732629'
+            hide_backdrop: false
+            show_header: true
+            bg_opacity: '88'
+            trigger_entity: input_boolean.displayalert
+            trigger_state: 'on'
+            trigger_close: true
+            styles: ''
+            close_action:
+              action: call-service
+              service: input_boolean.turn_off
+              target:
+                entity_id: input_boolean.displayalert
+          - type: custom:button-card
+            icon: mdi:alert-outline
+            styles:
+              card:
+                - box-shadow: none
+                - background: none
+                - border: none
+                - align-items: center
+                - padding: 0
+              icon:
+                - color: white
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: binary_sensor.kitchen_sink_water_leak_moisture
+                state: 'on'
+            card:
+              type: custom:mushroom-template-card
+              primary: Kitchen sink leak detected!
+              secondary: null
+              icon: mdi:water
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+              double_tap_action:
+                action: none
+              badge_color: white
+              card_mod:
+                style:
+                  mushroom-shape-icon$: |
+                    .shape {
+                      --shape-color: transparent !important;
+                    }
+                  .: |
+                    ha-state-icon {
+                      color: white;
+                      --icon-symbol-size: 40px;
+                        }
+                    ha-card {
+                      background-color: #732629;
+                      --card-primary-color: white;
+                      --card-secondary-color: white;
+                      border: 2.5px outset white;
+                      box-shadow: none;
+                    }
       - type: custom:bubble-card
         card_type: horizontal-buttons-stack
         1_link: '#lights'
@@ -581,15 +665,13 @@ views:
         3_icon: mdi:weather-hail
         4_link: '#mealie'
         4_name: ''
-        4_icon: mdi:food
+        4_icon: mdi:food-turkey
         5_link: '#music'
         5_icon: mdi:music
         5_name: ''
         rise_animation: true
-        card_mod:
-          style: |
-            .bubble-background {
-              background-color: transparent;
-            }
+        6_icon: mdi:cog
+        6_link: http://ha.siliconpixel.com/dashboard-test/panel-maintenance
+        highlight_current_view: true
     theme: M3-D07-DarkOliveGreen
 title: Office Panel
