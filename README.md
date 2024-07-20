@@ -6,6 +6,11 @@ This is a simple copy of one of my dashboards I use on my ThinkSmart View device
 
 [YAML file.](TSV_Dashboard.yaml)
 
+UPDATE: 20/7/24 - Updated the code to reflect multiple changes I've made to the dashboard.
+
+![image](https://github.com/user-attachments/assets/71cbfa7f-4c65-4e13-b350-38322792ff89)
+
+
 You'll need to crteate a new dashboard, edit it in raw mode from the dashboard view (top right pencil-three dots-Raw configuration editor) and paste in the code. Expect to make *extensive* modifications as dashboard rely heavily on a users HA setup. Hopefully this will give some ideas or a starting point if you like this type of approach.
 
 #### Dependencies (HACS): ####
