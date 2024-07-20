@@ -6,7 +6,7 @@ This is a simple copy of one of my dashboards I use on my ThinkSmart View device
 
 [YAML file.](TSV_Dashboard.yaml)
 
-UPDATE: 20/7/24 - Updated the code to reflect multiple changes I've made to the dashboard.
+UPDATE: 20/7/24 - Updated the code to reflect multiple changes I've made to the dashboard. Most noteworthy is the change to the bin collection card which uses swipe card to display other conditional cards for alerts such as water softener salt level, letterbox used etc. You can use any cards you like in there as long as they're the same size otherwise your dashboard will scroll off screen.
 
 ![image](https://github.com/user-attachments/assets/71cbfa7f-4c65-4e13-b350-38322792ff89)
 
@@ -32,6 +32,8 @@ There are quite a few dependencies but all of these are common, robust, well-sup
 [stateful-scenes](https://github.com/hugobloem/stateful_scenes) (This tracks the state of scenes in HA and is in beta for Philips Hue scenes. It currently doesn't work for Hue scenes but hopefully will in the future when it's been developed further/debugged)
 
 [Philips Hue Icons](https://github.com/arallsopp/hass-hue-icons) (optional) Philips Hue icons
+
+[Swipe card](https://github.com/bramkragten/swipe-card) To auto-fade or slide between multiple cards. This keeps any alert cards on screen without causing the dashboard to extend and conflict with the bubble card pop-up buttons.
 
 #### Dependencies (HA entities etc): ####
 
