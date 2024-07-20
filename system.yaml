@@ -1,0 +1,751 @@
+views:
+  - title: Panel maintenance POPUPS
+    path: panel-maintenance
+    type: custom:vertical-layout
+    cards:
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Hide headers
+            secondary: All devices
+            icon: mdi:table-headers-eye
+            entity: input_boolean.kiosk_hide_header_and_sidebar
+            icon_color: >-
+              {{ 'light-green' if
+              states('input_boolean.kiosk_hide_header_and_sidebar') == 'on' else
+              'dark-grey' }}
+            fill_container: false
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:mushroom-template-card
+            primary: Reload URL
+            secondary: ThinkSmart View (All)
+            icon: mdi:web-refresh
+            icon_color: ''
+            tap_action:
+              action: call-service
+              service: script.1711098942233
+              target: {}
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            entity: script.1711098942233
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:mushroom-template-card
+            primary: Reload URL
+            secondary: NSPanel (All)
+            icon: mdi:web-refresh
+            entity: script.reload_nspanel_load_url
+            icon_color: dark-grey
+            tap_action:
+              action: toggle
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+          - type: custom:mushroom-template-card
+            primary: Restart browser
+            secondary: ThinkSmart View (All)
+            icon: mdi:web-refresh
+            icon_color: ''
+            tap_action:
+              action: call-service
+              service: script.1711098942233
+              target: {}
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            entity: script.1711098942233
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 2
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Living Room controls
+            secondary: ''
+            icon: mdi:button-pointer
+            icon_color: ''
+            fill_container: false
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            tap_action:
+              action: navigate
+              navigation_path: '#livingroom'
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 1
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Kitchen controls
+            secondary: ''
+            icon: mdi:button-pointer
+            icon_color: ''
+            fill_container: false
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            tap_action:
+              action: navigate
+              navigation_path: '#kitchen'
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 1
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Hall controls
+            secondary: ''
+            icon: mdi:button-pointer
+            icon_color: ''
+            fill_container: false
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            tap_action:
+              action: navigate
+              navigation_path: '#hall'
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 1
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Office controls
+            secondary: ''
+            icon: mdi:button-pointer
+            icon_color: ''
+            fill_container: false
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            tap_action:
+              action: navigate
+              navigation_path: '#office'
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 1
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Study controls
+            secondary: ''
+            icon: mdi:button-pointer
+            icon_color: ''
+            fill_container: false
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            tap_action:
+              action: navigate
+              navigation_path: '#study'
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 1
+      - square: false
+        type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: Paul's Bedside controls
+            secondary: ''
+            icon: mdi:button-pointer
+            icon_color: ''
+            fill_container: false
+            hold_action:
+              action: none
+            double_tap_action:
+              action: none
+            tap_action:
+              action: navigate
+              navigation_path: '#paulsbedside'
+            card_mod:
+              style:
+                mushroom-state-info$: |
+                  .container {
+                   --card-primary-font-size: 18px;
+                   --card-secondary-font-size: 13px;
+                  }
+        columns: 1
+      - type: custom:button-card
+        entity: input_select.cube_mode
+        name: Back
+        tap_action:
+          action: navigate
+          navigation_path: '[[[window.history.back()]]]'
+        styles:
+          card:
+            - height: 80px
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#office'
+            margin_top_mobile: '-57px'
+          - type: entities
+            entities:
+              - entity: switch.office_thinksmart_fkb_screen
+                name: Screen
+              - entity: number.office_thinksmart_fkb_screen_brightness
+                name: Screen brightness
+              - entity: switch.office_thinksmart_fkb_kiosk_lock
+                name: Kiosk lock
+              - entity: switch.office_thinksmart_fkb_maintenance_mode
+                name: Maintenance mode
+              - entity: switch.office_thinksmart_fkb_motion_detection
+                name: Motion detection
+              - entity: button.office_thinksmart_fkb_load_start_url
+                name: Load start URL
+              - entity: button.office_thinksmart_fkb_restart_browser
+                name: Restart browser
+              - entity: button.office_thinksmart_fkb_restart_device
+                name: Restart device
+              - entity: button.office_thinksmart_fkb_bring_to_foreground
+                name: Bring to foreground
+              - entity: button.office_thinksmart_fkb_send_to_background
+                name: Send to background
+            title: Office
+            show_header_toggle: false
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#livingroom'
+            margin_top_mobile: '-57px'
+          - type: entities
+            entities:
+              - entity: switch.living_room_thinksmart_fkb_screen
+                name: Screen
+              - entity: number.living_room_thinksmart_fkb_screen_brightness
+                name: Screen brightness
+              - entity: switch.living_room_thinksmart_fkb_kiosk_lock
+                name: Kiosk lock
+              - entity: switch.living_room_thinksmart_fkb_maintenance_mode
+                name: Maintenance mode
+              - entity: switch.living_room_thinksmart_fkb_motion_detection
+                name: Motion detection
+              - entity: button.living_room_thinksmart_fkb_load_start_url
+                name: Load start URL
+              - entity: button.living_room_thinksmart_fkb_restart_browser
+                name: Restart browser
+              - entity: button.living_room_thinksmart_fkb_restart_device
+                name: Restart device
+              - entity: button.living_room_thinksmart_fkb_bring_to_foreground
+                name: Bring to foreground
+              - entity: button.living_room_thinksmart_fkb_send_to_background
+                name: Send to background
+            title: Living Room
+            show_header_toggle: false
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#kitchen'
+            margin_top_mobile: '-57px'
+          - type: entities
+            entities:
+              - entity: switch.kitchen_thinksmart_fkb_screen
+                name: Screen
+              - entity: number.kitchen_thinksmart_fkb_screen_brightness
+                name: Screen brightness
+              - entity: switch.kitchen_thinksmart_fkb_kiosk_lock
+                name: Kiosk lock
+              - entity: switch.kitchen_thinksmart_fkb_maintenance_mode
+                name: Maintenance mode
+              - entity: switch.kitchen_thinksmart_fkb_motion_detection
+                name: Motion detection
+              - entity: button.kitchen_thinksmart_fkb_load_start_url
+                name: Load start URL
+              - entity: button.kitchen_thinksmart_fkb_restart_browser
+                name: Restart browser
+              - entity: button.kitchen_thinksmart_fkb_restart_device
+                name: Restart device
+              - entity: button.kitchen_thinksmart_fkb_bring_to_foreground
+                name: Bring to foreground
+              - entity: button.kitchen_thinksmart_fkb_send_to_background
+                name: Send to background
+            title: Kitchen
+            show_header_toggle: false
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#hall'
+            margin_top_mobile: '-57px'
+          - type: entities
+            entities:
+              - entity: switch.nspanel_hall_screen
+                name: Screen
+              - entity: number.nspanel_hall_screen_brightness
+                name: Screen brightness
+              - entity: switch.nspanel_hall_kiosk_lock
+                name: Kiosk lock
+              - entity: switch.nspanel_hall_maintenance_mode
+                name: Maintenance mode
+              - entity: switch.nspanel_hall_motion_detection
+                name: Motion detection
+              - entity: button.nspanel_hall_load_start_url
+                name: Load start URL
+              - entity: button.nspanel_hall_restart_browser
+                name: Restart browser
+              - entity: button.nspanel_hall_restart_device
+                name: Restart device
+              - entity: button.nspanel_hall_bring_to_foreground
+                name: Bring to foreground
+              - entity: button.nspanel_hall_send_to_background
+                name: Send to background
+            title: NSPanel Hall
+            show_header_toggle: false
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#study'
+            margin_top_mobile: '-57px'
+          - type: entities
+            entities:
+              - entity: switch.study_thinksmart_fkb_screen
+                name: Screen
+              - entity: number.study_thinksmart_fkb_screen_brightness
+                name: Screen brightness
+              - entity: switch.study_thinksmart_fkb_kiosk_lock
+                name: Kiosk lock
+              - entity: switch.study_thinksmart_fkb_maintenance_mode
+                name: Maintenance mode
+              - entity: switch.study_thinksmart_fkb_motion_detection
+                name: Motion detection
+              - entity: button.study_thinksmart_fkb_load_start_url
+                name: Load start URL
+              - entity: button.study_thinksmart_fkb_restart_browser
+                name: Restart browser
+              - entity: button.study_thinksmart_fkb_restart_device
+                name: Restart device
+              - entity: button.study_thinksmart_fkb_bring_to_foreground
+                name: Bring to foreground
+              - entity: button.study_thinksmart_fkb_send_to_background
+                name: Send to background
+            title: Study
+            show_header_toggle: false
+      - type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#paulsbedside'
+            margin_top_mobile: '-57px'
+          - type: entities
+            entities:
+              - entity: switch.paul_s_bedside_thinksmart_fkb_screen
+                name: Screen
+              - entity: number.paul_s_bedside_thinksmart_fkb_screen_brightness
+                name: Screen brightness
+              - entity: switch.paul_s_bedside_thinksmart_fkb_kiosk_lock
+                name: Kiosk lock
+              - entity: switch.paul_s_bedside_thinksmart_fkb_maintenance_mode
+                name: Maintenance mode
+              - entity: switch.paul_s_bedside_thinksmart_fkb_motion_detection
+                name: Motion detection
+              - entity: button.paul_s_bedside_thinksmart_fkb_load_start_url
+                name: Load start URL
+              - entity: button.paul_s_bedside_thinksmart_fkb_restart_browser
+                name: Restart browser
+              - entity: button.paul_s_bedside_thinksmart_fkb_restart_device
+                name: Restart device
+              - entity: button.paul_s_bedside_thinksmart_fkb_bring_to_foreground
+                name: Bring to foreground
+              - entity: button.paul_s_bedside_thinksmart_fkb_send_to_background
+                name: Send to background
+            title: Paul's Bedside
+            show_header_toggle: false
+    layout:
+      width: 400
+  - title: ThinkCentre PC
+    icon: ''
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.system_monitor_disk_free
+            name: Disk free /
+          - entity: sensor.system_monitor_disk_use_percent
+            name: Disk usage /
+          - entity: sensor.system_monitor_disk_use_percent_config
+            name: Disk usage /config
+          - entity: sensor.system_monitor_ipv4_address_hassio
+            name: IPv4 address hassio
+          - entity: sensor.system_monitor_last_boot
+            name: Last boot
+          - entity: sensor.system_monitor_memory_use_percent
+            name: Memory usage
+          - entity: sensor.system_monitor_processor_temperature
+            name: Processor temperature
+          - entity: sensor.system_monitor_load_1m
+          - entity: sensor.system_monitor_processor_use
+        title: System Monitor
+      - type: custom:apexcharts-card
+        update_interval: 10sec
+        header:
+          show: true
+          title: Processor Use - Last 3 Hrs
+          show_states: true
+          colorize_states: true
+        graph_span: 3h
+        series:
+          - entity: sensor.system_monitor_processor_use
+            show:
+              name_in_header: false
+        all_series_config:
+          stroke_width: 1
+        apex_config:
+          chart:
+            height: 200px
+      - type: custom:apexcharts-card
+        update_interval: 10sec
+        header:
+          show: true
+          title: Processor Temperature - Last 3 Hrs
+          show_states: true
+          colorize_states: true
+        graph_span: 3h
+        series:
+          - entity: sensor.system_monitor_processor_temperature
+            show:
+              name_in_header: false
+        all_series_config:
+          stroke_width: 1
+        apex_config:
+          chart:
+            height: 200px
+      - type: custom:apexcharts-card
+        update_interval: 10sec
+        header:
+          show: true
+          title: Memory Use - Last 3 Hrs
+          show_states: true
+          colorize_states: true
+        graph_span: 3h
+        series:
+          - entity: sensor.system_monitor_memory_use_percent
+            show:
+              name_in_header: false
+        all_series_config:
+          stroke_width: 1
+        apex_config:
+          chart:
+            height: 200px
+    type: custom:vertical-layout
+    layout:
+      width: 500
+  - title: UPS
+    path: ups
+    icon: ''
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.ups_battery_charge
+            name: Battery charge
+          - entity: sensor.ups_input_voltage
+            name: Input voltage
+          - entity: sensor.ups_load
+            name: Load
+          - entity: sensor.ups_status
+            name: Status
+          - entity: sensor.ups_status_data
+            name: Status data
+          - entity: sensor.ups_battery_runtime
+        title: Ups
+  - title: Sun
+    path: sun
+    cards:
+      - type: entity
+        entity: sun.sun
+  - title: En-Suite
+    cards:
+      - type: entities
+        entities:
+          - entity: light.en_suite_ceiling
+          - entity: light.en_suite_fan
+          - entity: sensor.en_suite_humidity_derivative
+          - entity: sensor.en_suite_humidity_sensor_temperature
+          - entity: input_boolean.en_suite_auto_fan_bypass
+      - graph: line
+        type: sensor
+        detail: 1
+        entity: sensor.en_suite_humidity_sensor_humidity
+      - graph: line
+        type: sensor
+        detail: 1
+        entity: sensor.en_suite_humidity_sensor_temperature
+      - type: logbook
+        entities:
+          - light.en_suite_fan
+          - light.en_suite_ceiling
+          - input_boolean.en_suite_auto_fan_bypass
+      - graph: line
+        type: sensor
+        detail: 2
+        entity: sensor.en_suite_humidity_derivative
+      - type: thermostat
+        entity: climate.wiser_en_suite
+        show_current_as_primary: true
+      - show_name: true
+        show_icon: true
+        type: button
+        tap_action:
+          action: toggle
+        entity: input_boolean.en_suite_manual_fan_switch
+    path: en-suite
+  - title: Wiser
+    cards:
+      - type: custom:wiser-zigbee-card
+      - type: custom:wiser-schedule-card
+  - title: Panel Maintenance old
+    path: panel-maintenance-old
+    cards:
+      - show_name: true
+        show_icon: false
+        type: button
+        tap_action:
+          action: toggle
+        entity: input_boolean.kiosk_hide_header_and_sidebar
+        name: Hide header and sidebar (all devices)
+        show_state: true
+      - show_name: true
+        show_icon: false
+        type: button
+        tap_action:
+          action: toggle
+        entity: script.1711098942233
+        icon: mdi:devices
+        name: Reload ThinkSmart URL (All)
+        hold_action:
+          action: none
+      - show_name: true
+        show_icon: false
+        type: button
+        tap_action:
+          action: toggle
+        entity: script.thinksmart_restart_browsers_all
+        icon: mdi:devices
+        name: Restart ThinkSmart Browser (All)
+        hold_action:
+          action: none
+      - show_name: true
+        show_icon: false
+        type: button
+        tap_action:
+          action: toggle
+        entity: script.reload_nspanel_load_url
+        icon: mdi:devices
+        name: Reload NSPanel URL (All)
+        hold_action:
+          action: none
+      - type: entities
+        entities:
+          - entity: switch.nspanel_hall_screen
+            name: Screen
+          - entity: number.nspanel_hall_screen_brightness
+            name: Screen brightness
+          - entity: switch.nspanel_hall_kiosk_lock
+            name: Kiosk lock
+          - entity: switch.nspanel_hall_maintenance_mode
+            name: Maintenance mode
+          - entity: switch.nspanel_hall_motion_detection
+            name: Motion detection
+          - entity: button.nspanel_hall_load_start_url
+            name: Load start URL
+          - entity: button.nspanel_hall_restart_browser
+            name: Restart browser
+          - entity: button.nspanel_hall_restart_device
+            name: Restart device
+          - entity: button.nspanel_hall_bring_to_foreground
+            name: Bring to foreground
+          - entity: button.nspanel_hall_send_to_background
+            name: Send to background
+        title: NSPanel Hall
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: switch.kitchen_thinksmart_fkb_screen
+            name: Screen
+          - entity: number.kitchen_thinksmart_fkb_screen_brightness
+            name: Screen brightness
+          - entity: switch.kitchen_thinksmart_fkb_kiosk_lock
+            name: Kiosk lock
+          - entity: switch.kitchen_thinksmart_fkb_maintenance_mode
+            name: Maintenance mode
+          - entity: switch.kitchen_thinksmart_fkb_motion_detection
+            name: Motion detection
+          - entity: button.kitchen_thinksmart_fkb_load_start_url
+            name: Load start URL
+          - entity: button.kitchen_thinksmart_fkb_restart_browser
+            name: Restart browser
+          - entity: button.kitchen_thinksmart_fkb_restart_device
+            name: Restart device
+          - entity: button.kitchen_thinksmart_fkb_bring_to_foreground
+            name: Bring to foreground
+          - entity: button.kitchen_thinksmart_fkb_send_to_background
+            name: Send to background
+        title: Kitchen
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: switch.living_room_thinksmart_fkb_screen
+            name: Screen
+          - entity: number.living_room_thinksmart_fkb_screen_brightness
+            name: Screen brightness
+          - entity: switch.living_room_thinksmart_fkb_kiosk_lock
+            name: Kiosk lock
+          - entity: switch.living_room_thinksmart_fkb_maintenance_mode
+            name: Maintenance mode
+          - entity: switch.living_room_thinksmart_fkb_motion_detection
+            name: Motion detection
+          - entity: button.living_room_thinksmart_fkb_load_start_url
+            name: Load start URL
+          - entity: button.living_room_thinksmart_fkb_restart_browser
+            name: Restart browser
+          - entity: button.living_room_thinksmart_fkb_restart_device
+            name: Restart device
+          - entity: button.living_room_thinksmart_fkb_bring_to_foreground
+            name: Bring to foreground
+          - entity: button.living_room_thinksmart_fkb_send_to_background
+            name: Send to background
+        title: Living Room
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: switch.office_thinksmart_fkb_screen
+            name: Screen
+          - entity: number.office_thinksmart_fkb_screen_brightness
+            name: Screen brightness
+          - entity: switch.office_thinksmart_fkb_kiosk_lock
+            name: Kiosk lock
+          - entity: switch.office_thinksmart_fkb_maintenance_mode
+            name: Maintenance mode
+          - entity: switch.office_thinksmart_fkb_motion_detection
+            name: Motion detection
+          - entity: button.office_thinksmart_fkb_load_start_url
+            name: Load start URL
+          - entity: button.office_thinksmart_fkb_restart_browser
+            name: Restart browser
+          - entity: button.office_thinksmart_fkb_restart_device
+            name: Restart device
+          - entity: button.office_thinksmart_fkb_bring_to_foreground
+            name: Bring to foreground
+          - entity: button.office_thinksmart_fkb_send_to_background
+            name: Send to background
+        title: Office
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: switch.study_thinksmart_fkb_screen
+            name: Screen
+          - entity: number.study_thinksmart_fkb_screen_brightness
+            name: Screen brightness
+          - entity: switch.study_thinksmart_fkb_kiosk_lock
+            name: Kiosk lock
+          - entity: switch.study_thinksmart_fkb_maintenance_mode
+            name: Maintenance mode
+          - entity: switch.study_thinksmart_fkb_motion_detection
+            name: Motion detection
+          - entity: button.study_thinksmart_fkb_load_start_url
+            name: Load start URL
+          - entity: button.study_thinksmart_fkb_restart_browser
+            name: Restart browser
+          - entity: button.study_thinksmart_fkb_restart_device
+            name: Restart device
+          - entity: button.study_thinksmart_fkb_bring_to_foreground
+            name: Bring to foreground
+          - entity: button.study_thinksmart_fkb_send_to_background
+            name: Send to background
+        title: Study
+        show_header_toggle: false
+      - type: entities
+        entities:
+          - entity: switch.paul_s_bedside_thinksmart_fkb_screen
+            name: Screen
+          - entity: number.paul_s_bedside_thinksmart_fkb_screen_brightness
+            name: Screen brightness
+          - entity: switch.paul_s_bedside_thinksmart_fkb_kiosk_lock
+            name: Kiosk lock
+          - entity: switch.paul_s_bedside_thinksmart_fkb_maintenance_mode
+            name: Maintenance mode
+          - entity: switch.paul_s_bedside_thinksmart_fkb_motion_detection
+            name: Motion detection
+          - entity: button.paul_s_bedside_thinksmart_fkb_load_start_url
+            name: Load start URL
+          - entity: button.paul_s_bedside_thinksmart_fkb_restart_browser
+            name: Restart browser
+          - entity: button.paul_s_bedside_thinksmart_fkb_restart_device
+            name: Restart device
+          - entity: button.paul_s_bedside_thinksmart_fkb_bring_to_foreground
+            name: Bring to foreground
+          - entity: button.paul_s_bedside_thinksmart_fkb_send_to_background
+            name: Send to background
+        title: Paul's Bedside
+        show_header_toggle: false
+    type: custom:masonry-layout
+    layout:
+      max_cols: 4
+      width: 200
+title: System Devices
