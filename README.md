@@ -72,7 +72,7 @@ The ThinkSmart View does act as a player (via Fully Kiosk Browser) and sounds go
 
 This is a simple dashboard utilising the controls exposed by Fully Kiosk Browser. It's really handy as it allows me to control the devices, reload, restart etc. Also allows dynamic display of sidebar and header in kiosk mode - when you want to access other HA dashboards or settings on the TSV. Handy!
 
-![](assets/images/ManagementScreenshot.png)
+![image](https://github.com/user-attachments/assets/69e185a4-a921-4caf-9619-a0e83991ae1b)
 
 For any further questions - feel free to write in the Discussions area in GitHub.
 
