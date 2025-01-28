@@ -46,7 +46,7 @@ views:
         type: weather-forecast
         entity: weather.pirateweather
         forecast_type: daily
-        name: Current weather
+        name: Current weather in Highworth
       - type: custom:swipe-card
         parameters:
           effect: fade
